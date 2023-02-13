@@ -32,15 +32,7 @@ makeRandomCoverButton.addEventListener("click", function() {
 });
 
 function makeCover(coverImgSrc, title, descriptor1, descriptor2) {
-  return (
-    {
-      id: Date.now(),
-      cover: coverImgSrc,
-      title: title,
-      descriptor1: descriptor1,
-      descriptor2: descriptor2
-    }
-  )
+  return {id: Date.now(), cover: coverImgSrc, title: title, descriptor1: descriptor1, descriptor2: descriptor2} // create cover object, an aspect of our data model
 }
 
 function makeRandomCover() { // Updating the Data Model (currentCover)
