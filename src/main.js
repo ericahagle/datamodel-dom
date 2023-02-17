@@ -31,15 +31,19 @@ makeRandomCoverButton.addEventListener("click", function() {
   renderCurrentCover(); // Updating the DOM
 });
 
+function makeCover(coverImgSrc, title, descriptor1, descriptor2) {
+  return {id: Date.now(), cover: coverImgSrc, title: title, descriptor1: descriptor1, descriptor2: descriptor2} // create cover object, an aspect of our data model
+}
+
 function makeRandomCover() { // Updating the Data Model (currentCover)
-  currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
+  currentCover =  makeCover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
 }
 
 function renderCurrentCover() { // Using the Data Model (currentCover) to update the DOM
   bookCover.src = currentCover.cover;
   bookTitle.innerText = currentCover.title;
-  bookTagline1.innerText = currentCover.tagline1;
-  bookTagline2.innerText = currentCover.tagline2;
+  bookTagline1.innerText = currentCover.descriptor1;
+  bookTagline2.innerText = currentCover.descriptor2;
 }
 
 function getRandomIndex(array) {
