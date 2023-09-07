@@ -15,9 +15,13 @@ var viewSavedCoversButton = document.querySelector(".view-saved-button");
 
 // Take a minute to look at the code below. Pay attention to:
   // - What is representing the Data Model?
+      // currentCover(); but that links to the data.js file?
   // - When/where are we updating the Data Model?
+      // When we invoke makeRandomCover();
   // - When/where are we updating the DOM?
+      // When we invoke renderCurrentCover();
   // - Is the DOM update dependent on the Data Model?
+      // Yes?
 
 var currentCover; // Data Model 
 
@@ -77,17 +81,20 @@ saveCoverButton.addEventListener("click", function() {
 
 function saveCurrentCover() {
   // add code here
+  savedCovers.push(currentCover);
+  console.log("saved covers:", savedCovers);
 }
 
 function renderSavedCovers() {
   // add code here (some starter code provided below)
-  
-  // savedCoversContainer.innerHTML += 
-  //   `<section class="mini-cover" id="${Date.now()}">
-      // <img class="cover-image" src=${/* cover */}>
-      // <h2 class="cover-title">${/* title */}</h2>
-      // <h3 class="tagline">A tale of <span class="tagline-1">${/* tagline1 */}</span> and <span class="tagline-2">${/* tagline2 */}</span></h3>
-  //   </section>`
+  for (var i = 0; i < savedCovers.length; i++) {
+    savedCoversContainer.innerHTML += 
+    `<section class="mini-cover" id="${Date.now()}">
+      <img class="cover-image" src=${savedCovers[i].cover}>
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].descriptor1}</span> and <span class="tagline-2">${savedCovers[i].descriptor2}</span></h3>
+    </section>`
+  };
 }
 
 // PART 2 STOPS HERE!
